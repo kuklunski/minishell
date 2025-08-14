@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 23:51:19 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 00:05:56 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/14 00:17:54 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	if (!s)
 		return (0);

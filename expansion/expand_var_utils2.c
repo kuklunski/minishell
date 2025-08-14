@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 03:05:08 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 00:05:58 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:47:11 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,25 @@ static void	skip_variable(int *i, char *oldstr, int index)
 
 /*
 
-	* Processes one character: either copies a variable value or a regular character
+	* Processes one character: either copies 
+	a variable value or a regular character
  * Example: oldstr = "echo $USER", var_value = "john", index = 5
  * - If *i = 5 (at $): copies "john" to new_str, skips to after "USER"
  * - If *i = 0 (at 'e'): copies 'e' to new_str, advances both indices
  * Returns 1 if reached end of string, 0 to continue processing
  */
-static int	process_char_or_var(char *new_str, char *oldstr, char *var_value,
-		int *i, int *j, int index)
+static int	process_char_or_var(t_proc_ctx *ctx)
 {
-	if (oldstr[*i] == '$' && *i == index)
+	if (ctx->oldstr[*(ctx->i)] == '$' && *(ctx->i) == ctx->index)
 	{
-		copy_var_value(new_str, var_value, j);
-		skip_variable(i, oldstr, index);
-		if (oldstr[*i] == '\0')
+		copy_var_value(ctx->new_str, ctx->var_value, ctx->j);
+		skip_variable(ctx->i, ctx->oldstr, ctx->index);
+		if (ctx->oldstr[*(ctx->i)] == '\0')
 			return (1);
 	}
 	else
 	{
-		new_str[(*j)++] = oldstr[(*i)++];
+		ctx->new_str[(*(ctx->j))++] = ctx->oldstr[(*(ctx->i))++];
 	}
 	return (0);
 }
@@ -76,13 +76,21 @@ static int	process_char_or_var(char *new_str, char *oldstr, char *var_value,
 	+ " hello" (copy remaining)
  * Result in new_str: "echo john hello"
  * Handles loop control and null termination
+ * ctx is just for norminette
  */
 static void	build_new_string(char *new_str, char *oldstr, char *var_value,
 		int index)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
+	t_proc_ctx	ctx;
 
+	ctx.new_str = new_str;
+	ctx.oldstr = oldstr;
+	ctx.var_value = var_value;
+	ctx.index = index;
+	ctx.i = &i;
+	ctx.j = &j;
 	i = 0;
 	j = 0;
 	while (oldstr[i])
@@ -105,7 +113,7 @@ static void	build_new_string(char *new_str, char *oldstr, char *var_value,
 char	*new_token_string(char *oldstr, char *var_value, int newstr_size,
 		int index)
 {
-	char *new_str;
+	char	*new_str;
 
 	new_str = malloc(sizeof(char) * newstr_size);
 	if (!new_str)

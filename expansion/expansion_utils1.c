@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 01:56:04 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 00:05:57 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:50:17 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void	remove_char_at_index(char **str, int index)
 {
 	char	*new_str;
 	int		len;
+	int		i;
+	int		j;
 
-	int i, j;
 	len = ft_strlen(*str);
 	new_str = malloc(len);
 	if (!new_str)
@@ -39,8 +40,8 @@ void	remove_char_at_index(char **str, int index)
 // function to get the value of the variable from **env
 char	*get_var_value(t_token *token, char *str, t_data *data)
 {
-	char *value;
-	char *var;
+	char	*value;
+	char	*var;
 
 	var = get_var_name(str);
 	if (!var)
@@ -55,4 +56,15 @@ char	*get_var_value(t_token *token, char *str, t_data *data)
 	}
 	free_ptr(var);
 	return (value);
+}
+
+// function to get the variable name from the token
+char	*get_var_name(char *str)
+{
+	int		start;
+	char	*result;
+
+	start = find_dollar_pos(str);
+	result = add_equals(str, start);
+	return (result);
 }

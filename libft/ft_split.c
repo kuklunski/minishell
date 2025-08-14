@@ -12,92 +12,96 @@
 
 #include "../includes/minishell.h"
 
-static int	count_words(char const *s, char c)
+static int	word_count(const char *str, char c);
+static char	*fill_word(const char *str, int start, int end);
+static void	*ft_free(char **strs, int count);
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word);
+
+char	**ft_split(const char *s, char c)
 {
-	int	count;
-	int	in_word;
+	char	**res;
+	size_t	i;
+	int		j;
+	int		s_word;
 
-	count = 0;
-	in_word = 0;
-	while (*s)
-	{
-		if (*s != c && !in_word)
-		{
-			in_word = 1;
-			count++;
-		}
-		else if (*s == c)
-			in_word = 0;
-		s++;
-	}
-	return (count);
-}
-
-static char	*extract_word(char const *s, char c)
-{
-	int		len;
-	char	*word;
-	int		i;
-
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	word = (char *)malloc(sizeof(char) * (len + 1));
-	if (!word)
+	ft_initiate_vars(&i, &j, &s_word);
+	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
+	if (!res)
 		return (NULL);
-	i = 0;
-	while (i < len)
+	while (i <= ft_strlen(s))
 	{
-		word[i] = s[i];
+		if (s[i] != c && s_word < 0)
+			s_word = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
+		{
+			res[j] = fill_word(s, s_word, i);
+			if (!(res[j]))
+				return (ft_free(res, j));
+			s_word = -1;
+			j++;
+		}
 		i++;
 	}
-	word[i] = '\0';
-	return (word);
+	return (res);
 }
 
-static void	free_split(char **result, int words)
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word)
+{
+	*i = 0;
+	*j = 0;
+	*s_word = -1;
+}
+
+static void	*ft_free(char **strs, int count)
 {
 	int	i;
 
 	i = 0;
-	while (i < words)
+	while (i < count)
 	{
-		free(result[i]);
+		free(strs[i]);
 		i++;
 	}
-	free(result);
+	free(strs);
+	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static char	*fill_word(const char *str, int start, int end)
 {
-	char	**result;
-	int		words;
+	char	*word;
 	int		i;
 
-	if (!s)
-		return (NULL);
-	words = count_words(s, c);
-	result = (char **)malloc(sizeof(char *) * (words + 1));
-	if (!result)
-		return (NULL);
 	i = 0;
-	while (*s && i < words)
+	word = malloc((end - start + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	while (start < end)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
-		{
-			result[i] = extract_word(s, c);
-			if (!result[i])
-			{
-				free_split(result, i);
-				return (NULL);
-			}
-			while (*s && *s != c)
-				s++;
-			i++;
-		}
+		word[i] = str[start];
+		i++;
+		start++;
 	}
-	result[i] = NULL;
-	return (result);
+	word[i] = 0;
+	return (word);
+}
+
+static int	word_count(const char *str, char c)
+{
+	int	count;
+	int	x;
+
+	count = 0;
+	x = 0;
+	while (*str)
+	{
+		if (*str != c && x == 0)
+		{
+			x = 1;
+			count++;
+		}
+		else if (*str == c)
+			x = 0;
+		str++;
+	}
+	return (count);
 }

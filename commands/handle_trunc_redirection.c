@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 01:18:07 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 22:58:08 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:26:45 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	handle_trunc_redirection(t_command **cmd, t_token **tokens)
 	while (tcmd->next != NULL)
 		tcmd = tcmd->next;
 	init_inf_outf(tcmd);
-	open_output_truncation(tcmd->io_fds, temp->next->str, temp->next->str_backup);
+	open_output_truncation(tcmd->io_fds, temp->next->str,
+		temp->next->str_backup);
 	temp = temp->next;
 	if (temp->next->next)
 		temp = temp->next->next;

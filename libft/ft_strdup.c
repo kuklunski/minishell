@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 23:51:10 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 23:27:23 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/14 00:16:48 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 char	*ft_strdup(char *src)
 {
-	int i = 0;
-	char *res;
+	int		i;
+	char	*res;
 
+	i = 0;
 	if (!src)
 		return (NULL);
 	while (src[i])

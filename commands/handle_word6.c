@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 04:06:14 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 22:58:14 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:29:21 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static char	**copy_echo_to_new_tab(int len, char **new_tab, t_command *l_cmd,
 // same as create_args_echo, except we add existing args
 int	add_args_echo(t_token **tok, t_command *cmd)
 {
-	int new_args;
-	int args;
-	char **new_tab;
+	int		new_args;
+	int		args;
+	char	**new_tab;
 
 	remove_empty_args(tok);
 	new_args = count_arguments(*tok);

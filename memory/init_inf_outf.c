@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 04:35:41 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 04:35:41 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/14 00:35:25 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_inf_outf(t_command *command)
 {
 	if (!command->io_fds)
 	{
-		command->io_fds = malloc(sizeof *command->io_fds);
+		command->io_fds = malloc(sizeof * command->io_fds);
 		if (!command->io_fds)
 			return ;
 		command->io_fds->infile = NULL;

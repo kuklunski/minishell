@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 04:45:54 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 03:33:50 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/14 00:27:10 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,79 +54,36 @@ void	free_ptr(void *ptr)
 	}
 }
 
-void free_command(t_command *cmd) 
+void	free_command(t_command *cmd)
 {
-    int i = 0;
+	int	i;
 
-    if (!cmd)
-        return;
-    if (cmd->command)
-        free_ptr(cmd->command);
-    if (cmd->args) 
+	i = 0;
+	if (!cmd)
+		return ;
+	if (cmd->command)
+		free_ptr(cmd->command);
+	if (cmd->args)
 	{
-        while (cmd->args[i] != NULL)
+		while (cmd->args[i] != NULL)
 		{
-            free_ptr(cmd->args[i]);
-            i++;
-        }
-        free_ptr(cmd->args);
-    }
-    free_ptr(cmd);
+			free_ptr(cmd->args[i]);
+			i++;
+		}
+		free_ptr(cmd->args);
+	}
+	free_ptr(cmd);
 }
 
-void free_commands(t_command **cmd_list)
+void	free_commands(t_command **cmd_list)
 {
-    t_command *tmp;
+	t_command	*tmp;
 
-    while (*cmd_list) 
+	while (*cmd_list)
 	{
-        tmp = (*cmd_list)->next;
-        free_command(*cmd_list);
-        *cmd_list = tmp;
-    }
-    *cmd_list = NULL;
-}
-
-// Free data that should be cleaned up after each command iteration
-void	free_iteration_data(t_data *data)
-{
-	if (!data)
-		return ;
-	if (data->user_input)
-	{
-		free_ptr(data->user_input);
-		data->user_input = NULL;
+		tmp = (*cmd_list)->next;
+		free_command(*cmd_list);
+		*cmd_list = tmp;
 	}
-	if (data->token)
-	{
-		free_tokens(&data->token);
-		data->token = NULL;
-	}
-}
-
-void	free_data(t_data *data)
-{
-	if (!data)
-		return ;
-	free_iteration_data(data);
-	if (data->cmd) 
-	{
-        free_commands(&data->cmd);
-        data->cmd = NULL;
-    }
-	if (data->env)
-	{
-		free_env(data->env);
-		data->env = NULL;
-	}
-	if (data->working_dir)
-	{
-		free_ptr(data->working_dir);
-		data->working_dir = NULL;
-	}
-	if (data->old_working_dir)
-	{
-		free_ptr(data->old_working_dir);
-		data->old_working_dir = NULL;
-	}
+	*cmd_list = NULL;
 }

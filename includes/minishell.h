@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 22:52:25 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 03:12:55 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:42:12 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ enum					e_status
 	SQUOTE, //s_SQ
 	DQUOTE, //s_DQ
 };
+
+typedef struct s_proc_ctx
+{
+    char	*new_str;
+    char	*oldstr;
+    char	*var_value;
+    int		index;
+    int		*i;
+    int		*j;
+}	t_proc_ctx;
 
 typedef struct s_io_fds
 {

@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 00:37:23 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 21:02:54 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:29:54 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	error_cmd(char *command, char *detail, char *error_message, int error_nb)
 // example :// minishell: unexpected EOF while looking for matching `"'
 void	error_msg(char *errmsg, char *detail, int quotes)
 {
-	char *msg;
-	char *prefix;
-	char *suffix;
+	char	*msg;
+	char	*prefix;
+	char	*suffix;
 
 	msg = ft_strdup("minishell: ");
 	msg = append_str(msg, errmsg);

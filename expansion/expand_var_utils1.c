@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 02:58:18 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/08 02:58:18 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:43:07 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	update_token_string(t_token **token, char *newstr)
 
 char	*replace_var(t_token **token, char *str, char *var, int i)
 {
-	char *newstr;
-	int newstr_size;
+	char	*newstr;
+	int		newstr_size;
 
 	newstr_size = calculate_replacement_size(str, var, i);
 	newstr = new_token_string(str, var, newstr_size, i);

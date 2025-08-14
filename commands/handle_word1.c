@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 02:51:03 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 22:24:44 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:27:10 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	create_args_from_split(char **split, t_token **new_tok)
 // puts split[0] as the first command example: echo "$home" -> split[0] = "echo"
 void	split_token(t_command *last_cmd, char *cmd_str)
 {
-	t_token *new_tokens;
-	t_token *tmp;
-	char **splitted;
+	t_token	*new_tokens;
+	t_token	*tmp;
+	char	**splitted;
 
 	new_tokens = NULL;
 	splitted = ft_split(cmd_str, ' ');

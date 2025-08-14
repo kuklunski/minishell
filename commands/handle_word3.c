@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 03:03:35 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 03:03:35 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:28:21 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ char	**copy_to_new_tab(int len, char **new_tab, t_command *l_cmd,
 // and allocates a new array of size (len + i + 1)
 int	add_args_def(t_token **tok, t_command *l_cmd)
 {
-	int new_tokens;
-	int old_args;
-	char **new_tab;
-	t_token *temp;
+	int		new_tokens;
+	int		old_args;
+	char	**new_tab;
+	t_token	*temp;
 
 	new_tokens = count_new_tokens(tok);
 	old_args = count_existing_args(l_cmd->args);

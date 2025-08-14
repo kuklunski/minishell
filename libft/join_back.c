@@ -12,6 +12,10 @@
 
 #include "../includes/minishell.h"
 
+// Calculate the total length of all strings in the array
+// (tab[i][0] != '\0')  // Skip empty strings
+// total_len += ft_strlen(tab[i]) + 1;  // +1 for space
+// total_len--;  // Remove the last space
 static int	calculate_total_length(char **tab)
 {
 	int	total_len;
@@ -21,15 +25,19 @@ static int	calculate_total_length(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		if (tab[i][0] != '\0')  // Skip empty strings
-			total_len += ft_strlen(tab[i]) + 1;  // +1 for space
+		if (tab[i][0] != '\0')
+			total_len += ft_strlen(tab[i]) + 1;
 		i++;
 	}
 	if (total_len > 0)
-		total_len--;  // Remove the last space
+		total_len--;
 	return (total_len);
 }
 
+// Copy non-empty words from the array to the result string
+// tab[i][0] != '\0' skips empty strs
+// add space between words: result[j++] = ' ';
+// and then copy
 static void	copy_words_to_result(char *result, char **tab)
 {
 	int	i;
@@ -40,9 +48,9 @@ static void	copy_words_to_result(char *result, char **tab)
 	j = 0;
 	while (tab[i])
 	{
-		if (tab[i][0] != '\0')  // Skip empty strings
+		if (tab[i][0] != '\0')
 		{
-			if (j > 0)  // Add space before word (except first)
+			if (j > 0)
 				result[j++] = ' ';
 			k = 0;
 			while (tab[i][k])

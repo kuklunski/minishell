@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 01:48:10 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 22:58:15 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:49:57 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,4 @@ static char	*add_equals(char *str, int start)
 	tmp = ft_strjoin(var, "=");
 	free_ptr(var);
 	return (tmp);
-}
-
-// function to get the variable name from the token
-char	*get_var_name(char *str)
-{
-	int		start;
-	char	*result;
-
-	start = find_dollar_pos(str);
-	result = add_equals(str, start);
-	return (result);
 }

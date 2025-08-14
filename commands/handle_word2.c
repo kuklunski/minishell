@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 02:54:00 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 22:58:13 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:27:44 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int	create_args_def(t_token **tok, t_command *l_cmd)
 // Echo might need to preserve some stuff differently
 // than other commands
 // count_arguments function moved to handle_word5.c to avoid duplication
-
 int	fill_arguments(t_token **token, t_command *cmd)
 {
 	if (!ft_strcmp(cmd->command, "echo"))

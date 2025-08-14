@@ -12,55 +12,63 @@
 
 #include "../includes/minishell.h"
 
-bool    init_env(t_data *data, char **env)
+bool	init_env(t_data *data, char **env)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!env)
-        return (false);
-    while (env && env[i])
-        i++;
-    data->env = ft_calloc(i + 1, sizeof(char *));
-    if (!data->env)
-        return (false);
-    i = 0;
-    while (env[i])
-    {
-      data->env[i] = ft_strdup(env[i]);
-      if (!data->env[i]) {
-        while (--i >= 0)
-          free_ptr(data->env[i]);
-        free_ptr(data->env);
-        return (false);
-      }
-      i++;
-    }
-    return (true);
+	i = 0;
+	if (!env)
+		return (false);
+	while (env && env[i])
+		i++;
+	data->env = ft_calloc(i + 1, sizeof(char *));
+	if (!data->env)
+		return (false);
+	i = 0;
+	while (env[i])
+	{
+		data->env[i] = ft_strdup(env[i]);
+		if (!data->env[i])
+		{
+			while (--i >= 0)
+				free_ptr(data->env[i]);
+			free_ptr(data->env);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
 }
 
-bool    init_data(t_data *data, char **env)
+static void	free_env(t_data *data)
 {
-    if (!init_env(data, env))
+	int	i;
+
+	if (!data->env)
+		return ;
+	i = 0;
+	while (data->env[i])
 	{
-		write(STDERR_FILENO, "failed to set up environment\n", ft_strlen("failed to set up environment\n"));
+		free_ptr(data->env[i]);
+		i++;
+	}
+	free_ptr(data->env);
+	data->env = NULL;
+}
+
+bool	init_data(t_data *data, char **env)
+{
+	if (!init_env(data, env))
+	{
+		write(STDERR_FILENO, "failed to set up environment\n",
+			ft_strlen("failed to set up environment\n"));
 		return (false);
 	}
 	if (!init_working_dirs(data))
 	{
-		write(STDERR_FILENO, "failed to set up working directories\n", ft_strlen("failed to set up working directories\n"));
-		// Clean up environment on working dir failure
-		if (data->env)
-		{
-			int i = 0;
-			while (data->env[i])
-			{
-				free_ptr(data->env[i]);
-				i++;
-			}
-			free_ptr(data->env);
-			data->env = NULL;
-		}
+		write(STDERR_FILENO, "failed to set up working directories\n",
+			ft_strlen("failed to set up working directories\n"));
+		free_env(data);
 		return (false);
 	}
 	data->token = NULL;

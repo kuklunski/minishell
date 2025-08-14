@@ -2,15 +2,19 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init_working_dirs.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+        +:+     */
+/*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+
+        +#+        */
+/*                                                +#+#+#+#+#+
+        +#+           */
 /*   Created: 2025/08/10 21:14:53 by ylemkere          #+#    #+#             */
 /*   Updated: 2025/08/10 21:14:53 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
 /*
 returns the value of an env var
 */
@@ -35,14 +39,14 @@ char    *env_var_value(char **env, char *var)
 /*
 checks if an env var exists
 */
-bool env_var_exists(char **env, char *var)
+bool    env_var_exists(char **env, char *var)
 {
-    int     i;
-    int     var_len;
+    int i;
+    int var_len;
 
     i = 0;
     if (!env || !var || !*var)
-		return (false);
+        return (false);
     var_len = ft_strlen(var);
     if (var_len <= 0)
         return (false);
@@ -57,9 +61,9 @@ bool env_var_exists(char **env, char *var)
 
 bool    init_working_dirs(t_data *data)
 {
-    char    buffer[4096];
-    char    *working_dir;
-    
+    char buffer[4096];
+    char *working_dir;
+
     working_dir = getcwd(buffer, 4096);
     if (!working_dir)
         return (false);

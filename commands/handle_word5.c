@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 03:59:06 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 04:12:19 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:29:05 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*join_vars(t_token **token_node)
 // we skip joined vars cause we count them as one arg
 int	count_arguments(t_token *temp)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (temp && (temp->type == WORD || temp->type == VAR))

@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 02:51:25 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/08 02:51:25 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:32:24 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static char	*create_string_without_var(char *token_str, int index)
  */
 int	delete_var(t_token **token_node, char *token_str, int i)
 {
-	char *new_str;
+	char	*new_str;
 
 	new_str = create_string_without_var(token_str, i);
 	if (!new_str)

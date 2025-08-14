@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 01:50:15 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 00:06:07 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:47:42 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	process_heredoc_expansion(char **str, t_data *data, int *i)
 
 char	*expansion_heredoc(t_data *data, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

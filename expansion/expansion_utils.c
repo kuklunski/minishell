@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 01:40:59 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/08 01:40:59 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:48:09 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ bool	var_inside_quotes(char *str, int i)
 	}
 	return (false);
 }
+
 // checks if the character is a valid start for a variable name
 bool	valid_var_start(char c)
 {

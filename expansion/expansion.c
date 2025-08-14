@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 00:51:24 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/10 23:42:32 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:47:29 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	expand_token_vars(t_token **token, t_data *data)
 
 int	expansion(t_data *data, t_token **token_lst)
 {
-	t_token *temp;
+	t_token	*temp;
 
 	temp = *token_lst;
 	while (temp)

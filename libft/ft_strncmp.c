@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 23:51:24 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/07 23:51:24 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/14 00:18:02 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while ((s1[i] || s2[i]) && i < n)

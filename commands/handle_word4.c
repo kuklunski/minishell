@@ -6,7 +6,7 @@
 /*   By: ylemkere <ylemkere@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 03:48:20 by ylemkere          #+#    #+#             */
-/*   Updated: 2025/08/11 04:11:43 by ylemkere         ###   ########.fr       */
+/*   Updated: 2025/08/13 23:28:33 by ylemkere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	remove_empty_args(t_token **tokens)
 // allocates an args[command + args + NULL]
 int	create_args_echo(t_token **token_node, t_command *last_cmd)
 {
-	int nb_args;
-	t_token *temp;
-	int i;
+	int		nb_args;
+	t_token	*temp;
+	int		i;
 
 	remove_empty_args(token_node);
 	temp = *token_node;
